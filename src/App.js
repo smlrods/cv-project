@@ -33,7 +33,9 @@ class App extends React.Component {
         }
       ],
       practicalExperiences: [
-        this.practicalExperience
+        {
+          ...this.practicalExperience
+        }
       ],
       editing: true,
     }
