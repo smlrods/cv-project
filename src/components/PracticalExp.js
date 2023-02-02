@@ -10,32 +10,33 @@ class PracticalExp extends React.Component {
             handleChangePositionTitle,
             handleChangeMainTasks,
             handleChangeDateFrom,
-            handleChangeDateUntil} = this.props;
+            handleChangeDateUntil,
+            experience} = this.props;
 
     return (
       <div>
         <label htmlFor="companyNameInput">Company name</label>
-        <input onChange={handleChangeCompanyName}
+        <input onChange={(e) => handleChangeCompanyName(e, experience)}
                type="text"
                id="companyNameInput"
         />
         <label htmlFor="positionTitleInput">Position title</label>
-        <input onChange={handleChangePositionTitle}
+        <input onChange={(e) => handleChangePositionTitle(e, experience)}
                type="text"
                id="positionTitleInput"
         />
         <label htmlFor="mainTasksInput">Main Tasks</label>
-        <input onChange={handleChangeMainTasks}
+        <input onChange={(e) => handleChangeMainTasks(e, experience)}
                type="text"
                id="mainTasksInput"
         />
         <label htmlFor="dateFromInput">Date From</label>
-        <input onChange={handleChangeDateFrom}
+        <input onChange={(e) => handleChangeDateFrom(e, experience)}
                type="month"
                id="dateFromInput"
         />
         <label htmlFor="dateUntilInput">Date Until</label>
-        <input onChange={handleChangeDateUntil}
+        <input onChange={(e) => handleChangeDateUntil(e, experience)}
                type="month"
                id="dateUntilInput"
         />

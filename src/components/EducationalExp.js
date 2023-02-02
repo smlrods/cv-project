@@ -6,22 +6,26 @@ class EducationalExp extends React.Component {
   }
 
   render() {
-    const { handleChangeSchoolName, handleChangeTitleOfStudy, handleChangeDateOfStudy } = this.props;
+    const { handleChangeSchoolName,
+            handleChangeTitleOfStudy,
+            handleChangeDateOfStudy,
+            experience} = this.props;
 
     return (
       <div>
         <label htmlFor="schoolNameInput">School Name</label>
-        <input onChange={handleChangeSchoolName}
+        <input onChange={(e) => handleChangeSchoolName(e, experience)}
                type="text"
+               value={experience.schoolName}
                id="schoolNameInput"
         />
         <label htmlFor="titleOfStudyInput">Title of Study</label>
-        <input onChange={handleChangeTitleOfStudy}
+        <input onChange={(e) => handleChangeTitleOfStudy(e, experience)}
               type="text"
               id="titleOfStudyInput"
         />
         <label htmlFor="dateOfStudyInput">Date of Study</label>
-        <input onChange={handleChangeDateOfStudy}
+        <input onChange={(e) => handleChangeDateOfStudy(e, experience)}
                type="text"
                id="dateOfStudyInput"
         />
