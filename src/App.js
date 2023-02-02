@@ -85,6 +85,66 @@ class App extends React.Component {
     });
   }
 
+  handleChangeCompanyName = (e) => {
+    this.setState({
+      practicalExp: {
+        companyName: e.target.value,
+        positionTitle: this.state.practicalExp.positionTitle,
+        mainTasks: this.state.practicalExp.mainTasks,
+        dateFrom: this.state.practicalExp.dateFrom,
+        dateUntil: this.state.practicalExp.dateUntil,
+      }
+    });
+  }
+
+  handleChangePositionTitle = (e) => {
+    this.setState({
+      practicalExp: {
+        companyName: this.state.practicalExp.companyName,
+        positionTitle: e.target.value,
+        mainTasks: this.state.practicalExp.mainTasks,
+        dateFrom: this.state.practicalExp.dateFrom,
+        dateUntil: this.state.practicalExp.dateUntil,
+      }
+    });
+  }
+
+  handleChangeMainTasks = (e) => {
+    this.setState({
+      practicalExp: {
+        companyName: this.state.practicalExp.companyName,
+        positionTitle: this.state.practicalExp.positionTitle,
+        mainTasks: e.target.value,
+        dateFrom: this.state.practicalExp.dateFrom,
+        dateUntil: this.state.practicalExp.dateUntil,
+      }
+    });
+  }
+
+  handleChangeDateFrom = (e) => {
+    this.setState({
+      practicalExp: {
+        companyName: this.state.practicalExp.companyName,
+        positionTitle: this.state.practicalExp.positionTitle,
+        mainTasks: this.state.practicalExp.mainTasks,
+        dateFrom: e.target.value,
+        dateUntil: this.state.practicalExp.dateUntil,
+      }
+    });
+  }
+
+  handleChangeDateUntil = (e) => {
+    this.setState({
+      practicalExp: {
+        companyName: this.state.practicalExp.companyName,
+        positionTitle: this.state.practicalExp.positionTitle,
+        mainTasks: this.state.practicalExp.mainTasks,
+        dateFrom: this.state.practicalExp.dateFrom,
+        dateUntil: e.target.value,
+      }
+    });
+  }
+
   render() {
 
     return (
@@ -94,7 +154,12 @@ class App extends React.Component {
                 handleChangePhoneNumber={this.handleChangePhoneNumber}
                 handleChangeSchoolName={this.handleChangeSchoolName}
                 handleChangeTitleOfStudy={this.handleChangeTitleOfStudy}
-                handleChangeDateOfStudy={this.handleChangeDateOfStudy}/>
+                handleChangeDateOfStudy={this.handleChangeDateOfStudy}
+                handleChangeCompanyName={this.handleChangeCompanyName}
+                handleChangePositionTitle={this.handleChangePositionTitle}
+                handleChangeMainTasks={this.handleChangeMainTasks}
+                handleChangeDateFrom={this.handleChangeDateFrom}
+                handleChangeDateUntil={this.handleChangeDateUntil}/>
       </div>
     )
   }
