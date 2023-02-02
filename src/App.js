@@ -102,11 +102,11 @@ class App extends React.Component {
     });
   }
 
-  handleChangeCompanyName = (e, educationalExperience) => {
+  handleChangeCompanyName = (e, practicalExperience) => {
     this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
-        if (experience === educationalExperience) {
-          experience.schoolName = e.target.value;
+      practicalExperiences: this.state.practicalExperiences.map(experience => {
+        if (experience === practicalExperience) {
+          experience.companyName = e.target.value;
           return experience;
         }
         return experience;
@@ -114,11 +114,11 @@ class App extends React.Component {
     });
   }
 
-  handleChangePositionTitle = (e, educationalExperience) => {
+  handleChangePositionTitle = (e, practicalExperience) => {
     this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
-        if (experience === educationalExperience) {
-          experience.schoolName = e.target.value;
+      practicalExperiences: this.state.practicalExperiences.map(experience => {
+        if (experience === practicalExperience) {
+          experience.positionTitle = e.target.value;
           return experience;
         }
         return experience;
@@ -126,11 +126,11 @@ class App extends React.Component {
     });
   }
 
-  handleChangeMainTasks = (e, educationalExperience) => {
+  handleChangeMainTasks = (e, practicalExperience) => {
     this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
-        if (experience === educationalExperience) {
-          experience.schoolName = e.target.value;
+      practicalExperiences: this.state.practicalExperiences.map(experience => {
+        if (experience === practicalExperience) {
+          experience.mainTasks = e.target.value;
           return experience;
         }
         return experience;
@@ -138,11 +138,11 @@ class App extends React.Component {
     });
   }
 
-  handleChangeDateFrom = (e, educationalExperience) => {
+  handleChangeDateFrom = (e, practicalExperience) => {
     this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
-        if (experience === educationalExperience) {
-          experience.schoolName = e.target.value;
+      practicalExperiences: this.state.practicalExperiences.map(experience => {
+        if (experience === practicalExperience) {
+          experience.dateFrom = e.target.value;
           return experience;
         }
         return experience;
@@ -150,11 +150,11 @@ class App extends React.Component {
     });
   }
 
-  handleChangeDateUntil = (e, educationalExperience) => {
+  handleChangeDateUntil = (e, practicalExperience) => {
     this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
-        if (experience === educationalExperience) {
-          experience.schoolName = e.target.value;
+      practicalExperiences: this.state.practicalExperiences.map(experience => {
+        if (experience === practicalExperience) {
+          experience.dateUntil = e.target.value;
           return experience;
         }
         return experience;
