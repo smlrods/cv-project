@@ -55,13 +55,46 @@ class App extends React.Component {
     });
   }
 
+  handleChangeSchoolName = (e) => {
+    this.setState({
+      educationalExp: {
+        schoolName: e.target.value,
+        titleOfStudy: this.state.educationalExp.titleOfStudy,
+        dateOfStudy: this.state.educationalExp.dateOfStudy,
+      }
+    });
+  }
+
+  handleChangeTitleOfStudy = (e) => {
+    this.setState({
+      educationalExp: {
+        schoolName: this.state.educationalExp.schoolName,
+        titleOfStudy: e.target.value,
+        dateOfStudy: this.state.educationalExp.dateOfStudy,
+      }
+    });
+  }
+
+  handleChangeDateOfStudy = (e) => {
+    this.setState({
+      educationalExp: {
+        schoolName: this.state.educationalExp.schoolName,
+        titleOfStudy: this.state.educationalExp.titleOfStudy,
+        dateOfStudy: e.target.value,
+      }
+    });
+  }
+
   render() {
 
     return (
       <div>
         <CVForm handleChangeName={this.handleChangeName}
                 handleChangeEmail={this.handleChangeEmail}
-                handleChangePhoneNumber={this.handleChangePhoneNumber}/>
+                handleChangePhoneNumber={this.handleChangePhoneNumber}
+                handleChangeSchoolName={this.handleChangeSchoolName}
+                handleChangeTitleOfStudy={this.handleChangeTitleOfStudy}
+                handleChangeDateOfStudy={this.handleChangeDateOfStudy}/>
       </div>
     )
   }
