@@ -1,5 +1,6 @@
 import React from "react";
 import CVForm from "./components/CVForm";
+import CVPreview from "./components/CVPreview";
 import uniqid from "uniqid";
 
 class App extends React.Component {
@@ -223,6 +224,9 @@ class App extends React.Component {
     return (
       <div>
         <h2>Preview</h2>
+        <CVPreview generalInfo={this.state.generalInfo}
+                   educationalExperiences={this.state.educationalExperiences}
+                   practicalExperiences={this.state.practicalExperiences}/>
         <button onClick={() => this.setState({editing: !this.state.editing})}>Edit</button>
       </div>
     )
