@@ -4,6 +4,7 @@ import CVForm from "./components/CVForm";
 class App extends React.Component {
   constructor() {
     super();
+
     this.educationalExperience = {
       schoolName: '',
       titleOfStudy: '',
@@ -167,6 +168,12 @@ class App extends React.Component {
     })
   } 
 
+  deleteEducationalExp = (educationalExperience) => {
+    this.setState({
+      educationalExperiences: this.state.educationalExperiences.filter((experience) => experience !== educationalExperience)
+    });
+  }
+
   render() {
 
     return (
@@ -174,6 +181,7 @@ class App extends React.Component {
         <CVForm educationalExperiences={this.state.educationalExperiences}
                 practicalExperiences={this.state.practicalExperiences}
                 addEducationalExp={this.addEducationalExp}
+                deleteEducationalExp={this.deleteEducationalExp}
 
                 handleChangeName={this.handleChangeName}
                 handleChangeEmail={this.handleChangeEmail}
