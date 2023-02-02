@@ -35,6 +35,7 @@ class App extends React.Component {
       practicalExperiences: [
         this.practicalExperience
       ],
+      editing: true,
     }
   }
 
@@ -190,29 +191,40 @@ class App extends React.Component {
   }
 
   render() {
+    if (this.state.editing) {
+      return (
+        <div>
+          <CVForm generalInfo={this.state.generalInfo}
+                  educationalExperiences={this.state.educationalExperiences}
+                  practicalExperiences={this.state.practicalExperiences}
+                  addEducationalExp={this.addEducationalExp}
+                  addPracticalExp={this.addPracticalExp}
+                  deleteEducationalExp={this.deleteEducationalExp}
+                  deletePracticalExp={this.deletePracticalExp}
+
+                  handleChangeName={this.handleChangeName}
+                  handleChangeEmail={this.handleChangeEmail}
+                  handleChangePhoneNumber={this.handleChangePhoneNumber}
+                  handleChangeSchoolName={this.handleChangeSchoolName}
+                  handleChangeTitleOfStudy={this.handleChangeTitleOfStudy}
+                  handleChangeDateOfStudy={this.handleChangeDateOfStudy}
+                  handleChangeCompanyName={this.handleChangeCompanyName}
+                  handleChangePositionTitle={this.handleChangePositionTitle}
+                  handleChangeMainTasks={this.handleChangeMainTasks}
+                  handleChangeDateFrom={this.handleChangeDateFrom}
+                  handleChangeDateUntil={this.handleChangeDateUntil}/>
+          <button onClick={() => this.setState({editing: !this.state.editing})}>Submit</button>
+        </div>
+      )
+    }
 
     return (
       <div>
-        <CVForm educationalExperiences={this.state.educationalExperiences}
-                practicalExperiences={this.state.practicalExperiences}
-                addEducationalExp={this.addEducationalExp}
-                addPracticalExp={this.addPracticalExp}
-                deleteEducationalExp={this.deleteEducationalExp}
-                deletePracticalExp={this.deletePracticalExp}
-
-                handleChangeName={this.handleChangeName}
-                handleChangeEmail={this.handleChangeEmail}
-                handleChangePhoneNumber={this.handleChangePhoneNumber}
-                handleChangeSchoolName={this.handleChangeSchoolName}
-                handleChangeTitleOfStudy={this.handleChangeTitleOfStudy}
-                handleChangeDateOfStudy={this.handleChangeDateOfStudy}
-                handleChangeCompanyName={this.handleChangeCompanyName}
-                handleChangePositionTitle={this.handleChangePositionTitle}
-                handleChangeMainTasks={this.handleChangeMainTasks}
-                handleChangeDateFrom={this.handleChangeDateFrom}
-                handleChangeDateUntil={this.handleChangeDateUntil}/>
+        <h2>Preview</h2>
+        <button onClick={() => this.setState({editing: !this.state.editing})}>Edit</button>
       </div>
     )
+
   }
 }
 
