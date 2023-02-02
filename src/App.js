@@ -1,5 +1,6 @@
 import React from "react";
 import CVForm from "./components/CVForm";
+import uniqid from "uniqid";
 
 class App extends React.Component {
   constructor() {
@@ -9,6 +10,7 @@ class App extends React.Component {
       schoolName: '',
       titleOfStudy: '',
       dateOfStudy: '',
+      id: uniqid('e-'),
     };
     this.practicalExperience = {
       companyName: '',
@@ -16,6 +18,7 @@ class App extends React.Component {
       mainTasks: '',
       dateFrom: '',
       dateUntil: '',
+      id: uniqid('p-'),
     };
 
     this.state = {
@@ -164,13 +167,25 @@ class App extends React.Component {
 
   addEducationalExp = () => {
     this.setState({
-      educationalExperiences: [...this.state.educationalExperiences, {...this.educationalExperience}]
+      educationalExperiences: [...this.state.educationalExperiences, {...this.educationalExperience, id: uniqid('e-')}]
+    })
+  } 
+
+  addPracticalExp = () => {
+    this.setState({
+      practicalExperiences: [...this.state.practicalExperiences, {...this.practicalExperience, id: uniqid('p-')}]
     })
   } 
 
   deleteEducationalExp = (educationalExperience) => {
     this.setState({
       educationalExperiences: this.state.educationalExperiences.filter((experience) => experience !== educationalExperience)
+    });
+  }
+
+  deletePracticalExp = (practicalExperience) => {
+    this.setState({
+      practicalExperiences: this.state.practicalExperiences.filter((experience) => experience !== practicalExperience)
     });
   }
 
@@ -181,7 +196,9 @@ class App extends React.Component {
         <CVForm educationalExperiences={this.state.educationalExperiences}
                 practicalExperiences={this.state.practicalExperiences}
                 addEducationalExp={this.addEducationalExp}
+                addPracticalExp={this.addPracticalExp}
                 deleteEducationalExp={this.deleteEducationalExp}
+                deletePracticalExp={this.deletePracticalExp}
 
                 handleChangeName={this.handleChangeName}
                 handleChangeEmail={this.handleChangeEmail}
