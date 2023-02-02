@@ -4,24 +4,33 @@ import CVForm from "./components/CVForm";
 class App extends React.Component {
   constructor() {
     super();
+    this.educationalExperience = {
+      schoolName: '',
+      titleOfStudy: '',
+      dateOfStudy: '',
+    };
+    this.practicalExperience = {
+      companyName: '',
+      positionTitle: '',
+      mainTasks: '',
+      dateFrom: '',
+      dateUntil: '',
+    };
+
     this.state = {
       generalInfo: {
         name: '',
         email: '',
         phoneNumber: '',
       },
-      educationalExp: {
-        schoolName: '',
-        titleOfStudy: '',
-        dateOfStudy: '',
-      },
-      practicalExp: {
-        companyName: '',
-        positionTitle: '',
-        mainTasks: '',
-        dateFrom: '',
-        dateUntil: '',
-      } 
+      educationalExperiences: [
+        {
+          ...this.educationalExperience
+        }
+      ],
+      practicalExperiences: [
+        this.practicalExperience
+      ],
     }
   }
 
@@ -55,101 +64,118 @@ class App extends React.Component {
     });
   }
 
-  handleChangeSchoolName = (e) => {
+  handleChangeSchoolName = (e, educationalExperience) => {
     this.setState({
-      educationalExp: {
-        schoolName: e.target.value,
-        titleOfStudy: this.state.educationalExp.titleOfStudy,
-        dateOfStudy: this.state.educationalExp.dateOfStudy,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.schoolName = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
 
-  handleChangeTitleOfStudy = (e) => {
+  handleChangeTitleOfStudy = (e, educationalExperience) => {
     this.setState({
-      educationalExp: {
-        schoolName: this.state.educationalExp.schoolName,
-        titleOfStudy: e.target.value,
-        dateOfStudy: this.state.educationalExp.dateOfStudy,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.titleOfStudy= e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
+
     });
   }
 
-  handleChangeDateOfStudy = (e) => {
+  handleChangeDateOfStudy = (e, educationalExperience) => {
     this.setState({
-      educationalExp: {
-        schoolName: this.state.educationalExp.schoolName,
-        titleOfStudy: this.state.educationalExp.titleOfStudy,
-        dateOfStudy: e.target.value,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.dateOfStudy = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
 
-  handleChangeCompanyName = (e) => {
+  handleChangeCompanyName = (e, educationalExperience) => {
     this.setState({
-      practicalExp: {
-        companyName: e.target.value,
-        positionTitle: this.state.practicalExp.positionTitle,
-        mainTasks: this.state.practicalExp.mainTasks,
-        dateFrom: this.state.practicalExp.dateFrom,
-        dateUntil: this.state.practicalExp.dateUntil,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.schoolName = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
 
-  handleChangePositionTitle = (e) => {
+  handleChangePositionTitle = (e, educationalExperience) => {
     this.setState({
-      practicalExp: {
-        companyName: this.state.practicalExp.companyName,
-        positionTitle: e.target.value,
-        mainTasks: this.state.practicalExp.mainTasks,
-        dateFrom: this.state.practicalExp.dateFrom,
-        dateUntil: this.state.practicalExp.dateUntil,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.schoolName = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
 
-  handleChangeMainTasks = (e) => {
+  handleChangeMainTasks = (e, educationalExperience) => {
     this.setState({
-      practicalExp: {
-        companyName: this.state.practicalExp.companyName,
-        positionTitle: this.state.practicalExp.positionTitle,
-        mainTasks: e.target.value,
-        dateFrom: this.state.practicalExp.dateFrom,
-        dateUntil: this.state.practicalExp.dateUntil,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.schoolName = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
 
-  handleChangeDateFrom = (e) => {
+  handleChangeDateFrom = (e, educationalExperience) => {
     this.setState({
-      practicalExp: {
-        companyName: this.state.practicalExp.companyName,
-        positionTitle: this.state.practicalExp.positionTitle,
-        mainTasks: this.state.practicalExp.mainTasks,
-        dateFrom: e.target.value,
-        dateUntil: this.state.practicalExp.dateUntil,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.schoolName = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
 
-  handleChangeDateUntil = (e) => {
+  handleChangeDateUntil = (e, educationalExperience) => {
     this.setState({
-      practicalExp: {
-        companyName: this.state.practicalExp.companyName,
-        positionTitle: this.state.practicalExp.positionTitle,
-        mainTasks: this.state.practicalExp.mainTasks,
-        dateFrom: this.state.practicalExp.dateFrom,
-        dateUntil: e.target.value,
-      }
+      educationalExperiences: this.state.educationalExperiences.map(experience => {
+        if (experience === educationalExperience) {
+          experience.schoolName = e.target.value;
+          return experience;
+        }
+        return experience;
+      }),
     });
   }
+
+  addEducationalExp = () => {
+    this.setState({
+      educationalExperiences: [...this.state.educationalExperiences, {...this.educationalExperience}]
+    })
+  } 
 
   render() {
 
     return (
       <div>
-        <CVForm handleChangeName={this.handleChangeName}
+        <CVForm educationalExperiences={this.state.educationalExperiences}
+                practicalExperiences={this.state.practicalExperiences}
+                addEducationalExp={this.addEducationalExp}
+
+                handleChangeName={this.handleChangeName}
                 handleChangeEmail={this.handleChangeEmail}
                 handleChangePhoneNumber={this.handleChangePhoneNumber}
                 handleChangeSchoolName={this.handleChangeSchoolName}
