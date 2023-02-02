@@ -25,14 +25,17 @@ class CVForm extends React.Component {
             addEducationalExp,
             deleteEducationalExp,
             addPracticalExp,
-            deletePracticalExp} = this.props;
+            deletePracticalExp,
+            generalInfo} = this.props;
 
     return (
       <div>
         <h2>General Information</h2>
         <GeneralInfo handleChangeName={handleChangeName}
                      handleChangeEmail={handleChangeEmail}
-                     handleChangePhoneNumber={handleChangePhoneNumber}/>
+                     handleChangePhoneNumber={handleChangePhoneNumber}
+                     generalInfo={generalInfo}
+        />
         <h2>Educational Experiences</h2>
         {educationalExperiences.map((experience) => {
           return <div key={experience.id}>

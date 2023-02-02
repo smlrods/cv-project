@@ -22,11 +22,13 @@ class EducationalExp extends React.Component {
         <label htmlFor="titleOfStudyInput">Title of Study</label>
         <input onChange={(e) => handleChangeTitleOfStudy(e, experience)}
               type="text"
+              value={experience.titleOfStudy}
               id="titleOfStudyInput"
         />
         <label htmlFor="dateOfStudyInput">Date of Study</label>
         <input onChange={(e) => handleChangeDateOfStudy(e, experience)}
                type="text"
+               value={experience.dateOfStudy}
                id="dateOfStudyInput"
         />
       </div>
