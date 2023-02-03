@@ -1,0 +1,27 @@
+#CVPreview {
+
+}
+
+.cv-section-preview {
+  border-bottom: 3px solid ;
+  margin-bottom: 10px;
+}
+
+.cv-section-preview:last-child,
+.cv-section-preview div:last-child{
+  border-bottom: 0;
+}
+
+.cv-section-preview h2 {
+  font-size: 20px;
+}
+
+.cv-section-preview p {
+  font-size: 16px;
+  margin: 5px 0px;
+}
+
+.cv-section-preview > div {
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+}

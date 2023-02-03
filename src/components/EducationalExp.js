@@ -13,19 +13,19 @@ class EducationalExp extends React.Component {
 
     return (
       <div>
-        <label htmlFor="schoolNameInput">School Name</label>
+        <label htmlFor="schoolNameInput">School Name:</label>
         <input onChange={(e) => handleChangeSchoolName(e, experience)}
                type="text"
                value={experience.schoolName}
                id="schoolNameInput"
         />
-        <label htmlFor="titleOfStudyInput">Title of Study</label>
+        <label htmlFor="titleOfStudyInput">Title of Study:</label>
         <input onChange={(e) => handleChangeTitleOfStudy(e, experience)}
               type="text"
               value={experience.titleOfStudy}
               id="titleOfStudyInput"
         />
-        <label htmlFor="dateOfStudyInput">Date of Study</label>
+        <label htmlFor="dateOfStudyInput">Date of Study:</label>
         <input onChange={(e) => handleChangeDateOfStudy(e, experience)}
                type="text"
                value={experience.dateOfStudy}

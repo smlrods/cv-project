@@ -2,6 +2,7 @@ import React from "react";
 import CVForm from "./components/CVForm";
 import CVPreview from "./components/CVPreview";
 import uniqid from "uniqid";
+import './styles/App.css'
 
 class App extends React.Component {
   constructor() {
@@ -196,7 +197,7 @@ class App extends React.Component {
   render() {
     if (this.state.editing) {
       return (
-        <div>
+        <div id="App-application">
           <CVForm generalInfo={this.state.generalInfo}
                   educationalExperiences={this.state.educationalExperiences}
                   practicalExperiences={this.state.practicalExperiences}
@@ -223,11 +224,15 @@ class App extends React.Component {
 
     return (
       <div>
-        <h2>Preview</h2>
-        <CVPreview generalInfo={this.state.generalInfo}
-                   educationalExperiences={this.state.educationalExperiences}
-                   practicalExperiences={this.state.practicalExperiences}/>
-        <button onClick={() => this.setState({editing: !this.state.editing})}>Edit</button>
+        <div id="App-preview-header">
+          <h1>Preview</h1>
+          <button onClick={() => this.setState({editing: !this.state.editing})}>Edit</button>
+        </div>
+        <div id="App-preview">
+          <CVPreview generalInfo={this.state.generalInfo}
+                    educationalExperiences={this.state.educationalExperiences}
+                    practicalExperiences={this.state.practicalExperiences}/>
+        </div>
       </div>
     )
 

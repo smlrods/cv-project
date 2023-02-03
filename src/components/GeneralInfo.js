@@ -13,19 +13,19 @@ class GeneralInfo extends React.Component {
 
     return (
       <div>
-        <label htmlFor="nameInput">Name</label>
+        <label htmlFor="nameInput">Name:</label>
         <input onChange={handleChangeName}
                type="text"
                value={generalInfo.name}
                id="nameInput"
         />
-        <label htmlFor="emailInput">Email</label>
+        <label htmlFor="emailInput">Email:</label>
         <input onChange={handleChangeEmail}
                type="text"
                value={generalInfo.email}
                id="emailInput"
         />
-        <label htmlFor="phoneNumberInput">Phone Number</label>
+        <label htmlFor="phoneNumberInput">Phone Number:</label>
         <input onChange={handleChangePhoneNumber}
                type="text"
                value={generalInfo.phoneNumber}

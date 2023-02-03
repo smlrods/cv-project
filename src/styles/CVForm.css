@@ -1,0 +1,29 @@
+#CVForm {
+}
+
+#CVForm h1{
+  margin-bottom: 10px;
+}
+
+.CVForm-section {
+  border-bottom: 3px solid;
+  margin-bottom: 10px !important;
+  padding-bottom: 10px;
+}
+
+.CVForm-section > div {
+  padding: 10px 0px;
+}
+
+.CVForm-section div > input {
+  display: block;
+  border: 1px solid;
+  padding: 3px;
+  margin-bottom: 5px !important;
+  border-radius: 0;
+  width: 100%;
+}
+
+.CVForm-section div > label {
+  display: block;
+}
