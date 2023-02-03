@@ -1,9 +1,9 @@
 #CVPreview {
-
+    padding: 20px;
 }
 
 .cv-section-preview {
-  border-bottom: 3px solid ;
+  border-bottom: 1px solid ;
   margin-bottom: 10px;
 }
 

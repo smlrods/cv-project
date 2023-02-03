@@ -1,4 +1,5 @@
 import React from "react";
+import ReactToPrint from "react-to-print";
 import CVForm from "./components/CVForm";
 import CVPreview from "./components/CVPreview";
 import uniqid from "uniqid";
@@ -7,7 +8,7 @@ import './styles/App.css'
 class App extends React.Component {
   constructor() {
     super();
-
+    this.wrapper = React.createRef();
     this.educationalExperience = {
       schoolName: '',
       titleOfStudy: '',
@@ -197,7 +198,7 @@ class App extends React.Component {
   render() {
     if (this.state.editing) {
       return (
-        <div id="App-application">
+        <div id="App-application" ref={this.wrapper}>
           <CVForm generalInfo={this.state.generalInfo}
                   educationalExperiences={this.state.educationalExperiences}
                   practicalExperiences={this.state.practicalExperiences}
@@ -223,13 +224,18 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div ref={this.wrapper}>
         <div id="App-preview-header">
           <h1>Preview</h1>
           <button onClick={() => this.setState({editing: !this.state.editing})}>Edit</button>
+          <ReactToPrint trigger={() => {
+            return <button>Print</button>
+          }}
+          content={() => this.componetRef}
+        />
         </div>
         <div id="App-preview">
-          <CVPreview generalInfo={this.state.generalInfo}
+          <CVPreview ref={el => {this.componetRef = el}} generalInfo={this.state.generalInfo}
                     educationalExperiences={this.state.educationalExperiences}
                     practicalExperiences={this.state.practicalExperiences}/>
         </div>
