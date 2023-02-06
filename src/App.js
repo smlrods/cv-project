@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import CVForm from "./components/CVForm";
 import CVPreview from "./components/CVPreview";
 import uniqid from "uniqid";
 import './styles/App.css'
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.wrapper = React.createRef();
-    this.educationalExperience = {
+function App() {
+    const wrapper = React.createRef();
+    const componentRef = useRef();
+
+    const educationalExperience = {
       schoolName: '',
       titleOfStudy: '',
       dateOfStudy: '',
       id: uniqid('e-'),
     };
-    this.practicalExperience = {
+
+    const practicalExperience = {
       companyName: '',
       positionTitle: '',
       mainTasks: '',
@@ -24,225 +25,215 @@ class App extends React.Component {
       id: uniqid('p-'),
     };
 
-    this.state = {
-      generalInfo: {
-        name: '',
-        email: '',
-        phoneNumber: '',
-      },
-      educationalExperiences: [
-        {
-          ...this.educationalExperience
-        }
-      ],
-      practicalExperiences: [
-        {
-          ...this.practicalExperience
-        }
-      ],
-      editing: true,
-    }
-  }
+    const [generalInfo, setGeneralInfo] = useState({
+      name: '',
+      email: '',
+      phoneNumber: '',
+    });
+    const [educationalExperiences, setEducationalExperiences] = useState([
+      {
+        ...educationalExperience
+      }
+    ]);
+    const [practicalExperiences, setPracticalExperiences] = useState([
+      {
+        ...practicalExperience
+      }
+    ]);
 
-  handleChangeName = (e) => {
-    this.setState({
-      generalInfo: {
+    const [editing, setEditing] = useState(true);
+
+  const handleChangeName = (e) => {
+    setGeneralInfo({
         name: e.target.value,
-        email: this.state.generalInfo.email,
-        phoneNumber: this.state.generalInfo.phoneNumber,
-      }
+        email: generalInfo.email,
+        phoneNumber: generalInfo.phoneNumber,
     });
   }
 
-  handleChangeEmail = (e) => {
-    this.setState({
-      generalInfo: {
-        name: this.state.generalInfo.name,
-        email: e.target.value,
-        phoneNumber: this.state.generalInfo.phoneNumber,
-      }
+  const handleChangeEmail = (e) => {
+    setGeneralInfo({
+      name: generalInfo.name,
+      email: e.target.value,
+      phoneNumber: generalInfo.phoneNumber,
     });
   }
 
-  handleChangePhoneNumber = (e) => {
-    this.setState({
-      generalInfo: {
-        name: this.state.generalInfo.name,
-        email: this.state.generalInfo.email,
-        phoneNumber: e.target.value,
-      }
+  const handleChangePhoneNumber = (e) => {
+    setGeneralInfo({
+      name: generalInfo.name,
+      email: generalInfo.email,
+      phoneNumber: e.target.value,
     });
   }
 
-  handleChangeSchoolName = (e, educationalExperience) => {
-    this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
+  const handleChangeSchoolName = (e, educationalExperience) => {
+    setEducationalExperiences(
+      educationalExperiences.map(experience => {
         if (experience === educationalExperience) {
           experience.schoolName = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    );
   }
 
-  handleChangeTitleOfStudy = (e, educationalExperience) => {
-    this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
+  const handleChangeTitleOfStudy = (e, educationalExperience) => {
+    setEducationalExperiences(
+      educationalExperiences.map(experience => {
         if (experience === educationalExperience) {
           experience.titleOfStudy= e.target.value;
           return experience;
         }
         return experience;
-      }),
-
-    });
+      })
+    );
   }
 
-  handleChangeDateOfStudy = (e, educationalExperience) => {
-    this.setState({
-      educationalExperiences: this.state.educationalExperiences.map(experience => {
+  const handleChangeDateOfStudy = (e, educationalExperience) => {
+    setEducationalExperiences(
+      educationalExperiences.map(experience => {
         if (experience === educationalExperience) {
           experience.dateOfStudy = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    )
   }
 
-  handleChangeCompanyName = (e, practicalExperience) => {
-    this.setState({
-      practicalExperiences: this.state.practicalExperiences.map(experience => {
+  const handleChangeCompanyName = (e, practicalExperience) => {
+    setPracticalExperiences(
+      practicalExperiences.map(experience => {
         if (experience === practicalExperience) {
           experience.companyName = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    );
   }
 
-  handleChangePositionTitle = (e, practicalExperience) => {
-    this.setState({
-      practicalExperiences: this.state.practicalExperiences.map(experience => {
+  const handleChangePositionTitle = (e, practicalExperience) => {
+    setPracticalExperiences(
+      practicalExperiences.map(experience => {
         if (experience === practicalExperience) {
           experience.positionTitle = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    )
   }
 
-  handleChangeMainTasks = (e, practicalExperience) => {
-    this.setState({
-      practicalExperiences: this.state.practicalExperiences.map(experience => {
+  const handleChangeMainTasks = (e, practicalExperience) => {
+    setPracticalExperiences(
+      practicalExperiences.map(experience => {
         if (experience === practicalExperience) {
           experience.mainTasks = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    )
   }
 
-  handleChangeDateFrom = (e, practicalExperience) => {
-    this.setState({
-      practicalExperiences: this.state.practicalExperiences.map(experience => {
+  const handleChangeDateFrom = (e, practicalExperience) => {
+    setPracticalExperiences(
+      practicalExperiences.map(experience => {
         if (experience === practicalExperience) {
           experience.dateFrom = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    )
   }
 
-  handleChangeDateUntil = (e, practicalExperience) => {
-    this.setState({
-      practicalExperiences: this.state.practicalExperiences.map(experience => {
+  const handleChangeDateUntil = (e, practicalExperience) => {
+    setPracticalExperiences(
+      practicalExperiences.map(experience => {
         if (experience === practicalExperience) {
           experience.dateUntil = e.target.value;
           return experience;
         }
         return experience;
-      }),
-    });
+      })
+    );
   }
 
-  addEducationalExp = () => {
-    this.setState({
-      educationalExperiences: [...this.state.educationalExperiences, {...this.educationalExperience, id: uniqid('e-')}]
-    })
+  const addEducationalExp = () => {
+    setEducationalExperiences(
+      [...educationalExperiences, {...educationalExperience, id: uniqid('e-')}]
+    );
   } 
 
-  addPracticalExp = () => {
-    this.setState({
-      practicalExperiences: [...this.state.practicalExperiences, {...this.practicalExperience, id: uniqid('p-')}]
-    })
+  const addPracticalExp = () => {
+    setPracticalExperiences(
+      [...practicalExperiences, {...practicalExperience, id: uniqid('p-')}]
+    );
   } 
 
-  deleteEducationalExp = (educationalExperience) => {
-    this.setState({
-      educationalExperiences: this.state.educationalExperiences.filter((experience) => experience !== educationalExperience)
-    });
+  const deleteEducationalExp = (educationalExperience) => {
+    setEducationalExperiences(
+      educationalExperiences.filter((experience) => experience !== educationalExperience)
+    );
   }
 
-  deletePracticalExp = (practicalExperience) => {
-    this.setState({
-      practicalExperiences: this.state.practicalExperiences.filter((experience) => experience !== practicalExperience)
-    });
+  const deletePracticalExp = (practicalExperience) => {
+    setPracticalExperiences(
+      practicalExperiences.filter((experience) => experience !== practicalExperience)
+    );
   }
 
-  render() {
-    if (this.state.editing) {
-      return (
-        <div id="App-application" ref={this.wrapper}>
-          <CVForm generalInfo={this.state.generalInfo}
-                  educationalExperiences={this.state.educationalExperiences}
-                  practicalExperiences={this.state.practicalExperiences}
-                  addEducationalExp={this.addEducationalExp}
-                  addPracticalExp={this.addPracticalExp}
-                  deleteEducationalExp={this.deleteEducationalExp}
-                  deletePracticalExp={this.deletePracticalExp}
-
-                  handleChangeName={this.handleChangeName}
-                  handleChangeEmail={this.handleChangeEmail}
-                  handleChangePhoneNumber={this.handleChangePhoneNumber}
-                  handleChangeSchoolName={this.handleChangeSchoolName}
-                  handleChangeTitleOfStudy={this.handleChangeTitleOfStudy}
-                  handleChangeDateOfStudy={this.handleChangeDateOfStudy}
-                  handleChangeCompanyName={this.handleChangeCompanyName}
-                  handleChangePositionTitle={this.handleChangePositionTitle}
-                  handleChangeMainTasks={this.handleChangeMainTasks}
-                  handleChangeDateFrom={this.handleChangeDateFrom}
-                  handleChangeDateUntil={this.handleChangeDateUntil}/>
-          <button onClick={() => this.setState({editing: !this.state.editing})}>Submit</button>
-        </div>
-      )
-    }
-
+  if (editing) {
     return (
-      <div ref={this.wrapper}>
-        <div id="App-preview-header">
-          <h1>Preview</h1>
-          <button onClick={() => this.setState({editing: !this.state.editing})}>Edit</button>
-          <ReactToPrint trigger={() => {
-            return <button>Print</button>
-          }}
-          content={() => this.componetRef}
-        />
-        </div>
-        <div id="App-preview">
-          <CVPreview ref={el => {this.componetRef = el}} generalInfo={this.state.generalInfo}
-                    educationalExperiences={this.state.educationalExperiences}
-                    practicalExperiences={this.state.practicalExperiences}/>
-        </div>
+      <div id="App-application" ref={wrapper}>
+        <CVForm generalInfo={generalInfo}
+                educationalExperiences={educationalExperiences}
+                practicalExperiences={practicalExperiences}
+
+                addEducationalExp={addEducationalExp}
+                addPracticalExp={addPracticalExp}
+                deleteEducationalExp={deleteEducationalExp}
+                deletePracticalExp={deletePracticalExp}
+
+                handleChangeName={handleChangeName}
+                handleChangeEmail={handleChangeEmail}
+                handleChangePhoneNumber={handleChangePhoneNumber}
+                handleChangeSchoolName={handleChangeSchoolName}
+                handleChangeTitleOfStudy={handleChangeTitleOfStudy}
+                handleChangeDateOfStudy={handleChangeDateOfStudy}
+                handleChangeCompanyName={handleChangeCompanyName}
+                handleChangePositionTitle={handleChangePositionTitle}
+                handleChangeMainTasks={handleChangeMainTasks}
+                handleChangeDateFrom={handleChangeDateFrom}
+                handleChangeDateUntil={handleChangeDateUntil}/>
+        <button onClick={() => setEditing(!editing)}>Submit</button>
       </div>
     )
-
   }
+
+  return (
+    <div ref={wrapper}>
+      <div id="App-preview-header">
+        <h1>Preview</h1>
+        <button onClick={() => setEditing(!editing)}>Edit</button>
+        <ReactToPrint 
+          trigger={() => {
+          return <button>Print</button>
+        }}
+        content={() => componentRef.current}
+      />
+      </div>
+      <div id="App-preview">
+        <CVPreview ref={componentRef} generalInfo={generalInfo}
+                  educationalExperiences={educationalExperiences}
+                  practicalExperiences={practicalExperiences}/>
+      </div>
+    </div>
+  )
 }
 
 export default App;
